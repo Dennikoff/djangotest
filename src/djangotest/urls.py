@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from women.views import index as womenIndex
+from women.views import cat 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('women/', womenIndex),
+    path('cat/', cat),
 ]
