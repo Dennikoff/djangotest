@@ -8,6 +8,8 @@ def cat(request, cat_id):
   return HttpResponse(f'<h1>Страница cat</h1><p>id: {cat_id}</p>')
 
 def catSlug(request, cat_slug):
+  if request.GET:
+    print(request.GET)
   return HttpResponse(f'<h1>Страница cat</h1><p>slug: {cat_slug}</p>')
 
 def archive(request, year):
