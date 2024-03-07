@@ -3,10 +3,12 @@ from django.http import Http404, HttpResponse
 from django.urls import reverse
 
 def index(request):
-  return render(request, 'women/index.html')
+  data = {'title': 'Главная страница'}
+  return render(request, 'women/index.html', data)
 
 def about(request):
-  return render(request, 'women/about.html')
+  data = {'title': 'О сайте'}
+  return render(request, 'women/about.html', data)
 
 
 def cat(request, cat_id):
