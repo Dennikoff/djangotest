@@ -2,7 +2,13 @@ from django.shortcuts import redirect, render
 from django.http import Http404, HttpResponse
 from django.urls import reverse
 
-menu = ['Главная', 'О сайте', "Категории", "Войти"] 
+menu = [
+  {'title': 'Главная', 'page_name': 'home'},
+  {'title': 'О сайте', 'page_name': 'about'},
+  {'title': 'Добавить пост', 'page_name': 'add_page'},
+  {'title': 'Контакты', 'page_name': 'contact'},
+  {'title': 'Логин', 'page_name': 'login'},
+] 
 
 posts = [
   {'id': 1, 'title': 'Post 1', 'body': 'Post 1 body', 'is_published': True},
@@ -20,19 +26,22 @@ def about(request):
   return render(request, 'women/about.html', context=data)
 
 
-def cat(request, cat_id):
-  return HttpResponse(f'<h1>Страница cat</h1><p>id: {cat_id}</p>')
 
-def catSlug(request, cat_slug):
-  if request.GET:
-    print(request.GET)
-  return HttpResponse(f'<h1>Страница cat</h1><p>slug: {cat_slug}</p>')
+def post(request, post_id):
+  data = {'post_id': post_id}
+  return render(request, 'women/post.html', data)
 
-def archive(request, year):
-  if(year > 2024):
-    uri = reverse('cats_slug', args=['lol']) 
-    return redirect(uri)
-  return HttpResponse(f'<h1>Страница Архива</h1><p>Год: {year}</p>')
+def addpage(request):
+  return HttpResponse('<h1>Добавить пост</h1>')
+
+def contact(request):
+  return HttpResponse('<h1>Контакты</h1>')
+
+def login(request):
+  return HttpResponse('<h1>Логин</h1>')
+
+
+
 
 def page_not_found(request, exception):
   return HttpResponse(f'<h1>Страница не найдена</h1>')

@@ -6,9 +6,15 @@
     <title>{{ title }}</title>
   </head>
   <body>
+    <ul>
+
+    
     {% for item in menu %}
-    <p>{{ item }}</p>
-    {% endfor %}
+      <li>
+        <a href="{% url item.page_name %}">{{ item.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
     <h1>{{ title }}</h1>
 
     <ul>
@@ -17,6 +23,7 @@
         <li>
           <h2>{{ post.id }}. {{ post.title }}</h2>
           <p>{{ post.body }}</p>
+          <a href="{% url 'post' post.id  %}" >Читать пост</a>
           {% if not forloop.last %}
           <hr />
           {% endif %}
