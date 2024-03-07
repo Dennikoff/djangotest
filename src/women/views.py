@@ -2,13 +2,22 @@ from django.shortcuts import redirect, render
 from django.http import Http404, HttpResponse
 from django.urls import reverse
 
+menu = ['Главная', 'О сайте', "Категории", "Войти"] 
+
+posts = [
+  {'id': 1, 'title': 'Post 1', 'body': 'Post 1 body', 'is_published': True},
+  {'id': 2, 'title': 'Post 2', 'body': 'Post 2 body', 'is_published': False},
+  {'id': 3, 'title': 'Post 3', 'body': 'Post 3 body', 'is_published': True},
+  
+]
+
 def index(request):
-  data = {'title': 'Главная страница'}
-  return render(request, 'women/index.html', data)
+  data = {'title': 'Главная страница', 'menu': menu, 'posts': posts}
+  return render(request, 'women/index.html', context=data)
 
 def about(request):
-  data = {'title': 'О сайте'}
-  return render(request, 'women/about.html', data)
+  data = {'title': 'О сайте', 'menu': menu}
+  return render(request, 'women/about.html', context=data)
 
 
 def cat(request, cat_id):
