@@ -15,5 +15,5 @@ def catSlug(request, cat_slug):
 def archive(request, year):
   return HttpResponse(f'<h1>Страница Архива</h1><p>Год: {year}</p>')
 
-def notFound(request, path):
-  return HttpResponse(f'<h1>Страница не найдена</h1><p>Страница по пути <b>{path}</b> не найдена</p>')
+def page_not_found(request, exception):
+  return HttpResponse(f'<h1>Страница не найдена</h1>')
