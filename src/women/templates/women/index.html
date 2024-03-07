@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }}</title>
-  </head>
-  <body>
-    <ul>
+{% extends 'base.html' %}
 
-    
-    {% for item in menu %}
-      <li>
-        <a href="{% url item.page_name %}">{{ item.title }}</a>
-      </li>
-      {% endfor %}
-    </ul>
-    <h1>{{ title }}</h1>
+{% block content %}
 
-    <ul>
+  {% include 'women/includes/nav.html' only with title2="asdbasd asd" %}
+  <h1>{{ title }}</h1>
+
+     <ul>
       {% for post in posts %} 
         {% if post.is_published %}
         <li>
@@ -32,5 +20,6 @@
         
       {% endfor %}
     </ul>
-  </body>
-</html>
+    {% include 'women/includes/nav.html' %}
+{% endblock %}
+

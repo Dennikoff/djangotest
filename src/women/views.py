@@ -14,7 +14,6 @@ posts = [
   {'id': 1, 'title': 'Post 1', 'body': 'Post 1 body', 'is_published': True},
   {'id': 2, 'title': 'Post 2', 'body': 'Post 2 body', 'is_published': False},
   {'id': 3, 'title': 'Post 3', 'body': 'Post 3 body', 'is_published': True},
-  
 ]
 
 def index(request):
