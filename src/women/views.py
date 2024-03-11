@@ -19,14 +19,23 @@ posts = [
   {'id': 3, 'title': 'Post 3', 'body': 'Post 3 body', 'is_published': True},
 ]
 
+cats_db = [
+  {'id': 1, 'name': 'Актрисы'},
+  {'id': 2, 'name': 'Певицы'},
+  {'id': 3, 'name': 'Спортсменки'},
+]
+
 def index(request):
-  data = {'title': 'Главная страница', 'menu': menu, 'posts': posts}
+  data = {'title': 'Главная страница', 'menu': menu, 'posts': posts, 'cat_selected': 0}
   return render(request, 'women/index.html', context=data)
 
 def about(request):
   data = {'title': 'О сайте', 'menu': menu}
   return render(request, 'women/about.html', context=data)
 
+def show_category(request, cat_id):
+  data = {'title': 'Главная страница', 'menu': menu, 'posts': posts, 'cat_selected': cat_id}
+  return render(request, 'women/index.html', context=data)
 
 
 def post(request, post_id):
