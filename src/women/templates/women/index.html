@@ -1,25 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-  {% include 'women/includes/nav.html' only with title2="asdbasd asd" %}
-  <h1>{{ title }}</h1>
-
-     <ul>
-      {% for post in posts %} 
-        {% if post.is_published %}
-        <li>
-          <h2>{{ post.id }}. {{ post.title }}</h2>
-          <p>{{ post.body }}</p>
-          <a href="{% url 'post' post.id  %}" >Читать пост</a>
-          {% if not forloop.last %}
-          <hr />
-          {% endif %}
-        </li> 
-        {% endif %}
-        
-      {% endfor %}
-    </ul>
-    {% include 'women/includes/nav.html' %}
+<ul class="list-articles">
+	{% for p in posts %}
+	{% if p.is_published %}
+			<li><h2>{{p.title}}</h2>
+      {% autoescape off %}
+        {{p.body | linebreaks | truncatewords:50}}
+      {% endautoescape %}
+			<div class="clear"></div>
+			<p class="link-read-post"><a href="{% url 'post' p.id %}">Читать пост</a></p>
+			</li>
+	{% endif %}
+	{% endfor %}
+</ul>
 {% endblock %}
-
